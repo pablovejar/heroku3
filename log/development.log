@@ -1,0 +1,580 @@
+  [1m[35m (2209.2ms)[0m  [1m[35mCREATE DATABASE "develop_software_development" ENCODING = 'unicode'[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2090.2ms)[0m  [1m[35mCREATE DATABASE "develop_software_test" ENCODING = 'unicode'[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (71.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7683323395100698065)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to DeviseCreateUsers (20190926042016)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (53.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190926042016_devise_create_users.rb:5
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20190926042016_devise_create_users.rb:38
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20190926042016_devise_create_users.rb:39
+  [1m[36mActiveRecord::SchemaMigration Create (10.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190926042016"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateRestaurants (20190926053300)
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (33.6ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying NOT NULL, "mail" character varying NOT NULL, "address" character varying NOT NULL, "rating" float, "phone" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190926053300_create_restaurants.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190926053300"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateOrders (20190926065525)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (44.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "price" float NOT NULL, "payment" character varying NOT NULL, "delivery_address" character varying NOT NULL, "delivery_time" time NOT NULL, "status" character varying NOT NULL, "notes" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190926065525_create_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190926065525"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateDishes (20190926071021)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (42.8ms)[0m  [1m[35mCREATE TABLE "dishes" ("id" bigserial primary key, "name" character varying NOT NULL, "price" float NOT NULL, "description" text, "quantity" integer, "rating" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190926071021_create_dishes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190926071021"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateComments (20190929152405)
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (49.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "date" date NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190929152405_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190929152405"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddUserToOrders (20191009174818)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "orders" ADD "user_id" bigint[0m
+  ↳ db/migrate/20191009174818_add_user_to_orders.rb:3
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_user_id" ON "orders"  ("user_id")[0m
+  ↳ db/migrate/20191009174818_add_user_to_orders.rb:3
+  [1m[35m (44.5ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20191009174818_add_user_to_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191009174818"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddDishToOrders (20191014041027)
+  [1m[35m (5.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "orders" ADD "dish_id" bigint[0m
+  ↳ db/migrate/20191014041027_add_dish_to_orders.rb:3
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_dish_id" ON "orders"  ("dish_id")[0m
+  ↳ db/migrate/20191014041027_add_dish_to_orders.rb:3
+  [1m[35m (20.5ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_e93a15e9e2"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+[0m
+  ↳ db/migrate/20191014041027_add_dish_to_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191014041027"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddUserToRestaurants (20191016012353)
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "restaurants" ADD "user_id" bigint[0m
+  ↳ db/migrate/20191016012353_add_user_to_restaurants.rb:3
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE  INDEX  "index_restaurants_on_user_id" ON "restaurants"  ("user_id")[0m
+  ↳ db/migrate/20191016012353_add_user_to_restaurants.rb:3
+  [1m[35m (13.3ms)[0m  [1m[35mALTER TABLE "restaurants" ADD CONSTRAINT "fk_rails_aef57e41ec"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20191016012353_add_user_to_restaurants.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191016012353"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddUserToComments (20191016012423)
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "comments" ADD "user_id" bigint[0m
+  ↳ db/migrate/20191016012423_add_user_to_comments.rb:3
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  ↳ db/migrate/20191016012423_add_user_to_comments.rb:3
+  [1m[35m (14.0ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20191016012423_add_user_to_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191016012423"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddRestaurantToOrders (20191016012449)
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "orders" ADD "restaurant_id" bigint[0m
+  ↳ db/migrate/20191016012449_add_restaurant_to_orders.rb:3
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_restaurant_id" ON "orders"  ("restaurant_id")[0m
+  ↳ db/migrate/20191016012449_add_restaurant_to_orders.rb:3
+  [1m[35m (9.6ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_9af093cac8"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+[0m
+  ↳ db/migrate/20191016012449_add_restaurant_to_orders.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191016012449"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddRestaurantToComments (20191016190828)
+  [1m[35m (5.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "comments" ADD "restaurant_id" bigint[0m
+  ↳ db/migrate/20191016190828_add_restaurant_to_comments.rb:3
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_restaurant_id" ON "comments"  ("restaurant_id")[0m
+  ↳ db/migrate/20191016190828_add_restaurant_to_comments.rb:3
+  [1m[35m (10.8ms)[0m  [1m[35mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_1b0c29f17e"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+[0m
+  ↳ db/migrate/20191016190828_add_restaurant_to_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191016190828"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to AddRestaurantToDishes (20191016192533)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "dishes" ADD "restaurant_id" bigint[0m
+  ↳ db/migrate/20191016192533_add_restaurant_to_dishes.rb:3
+  [1m[35m (20.7ms)[0m  [1m[35mCREATE  INDEX  "index_dishes_on_restaurant_id" ON "dishes"  ("restaurant_id")[0m
+  ↳ db/migrate/20191016192533_add_restaurant_to_dishes.rb:3
+  [1m[35m (9.2ms)[0m  [1m[35mALTER TABLE "dishes" ADD CONSTRAINT "fk_rails_d0358ace74"
+FOREIGN KEY ("restaurant_id")
+  REFERENCES "restaurants" ("id")
+[0m
+  ↳ db/migrate/20191016192533_add_restaurant_to_dishes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191016192533"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateReviews (20191017035540)
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (37.0ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" bigserial primary key, "body" text, "value" integer, "dish_id" bigint, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_20a1166865"
+FOREIGN KEY ("dish_id")
+  REFERENCES "dishes" ("id")
+, CONSTRAINT "fk_rails_74a66bd6c5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20191017035540_create_reviews.rb:3
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_dish_id" ON "reviews"  ("dish_id")[0m
+  ↳ db/migrate/20191017035540_create_reviews.rb:3
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_user_id" ON "reviews"  ("user_id")[0m
+  ↳ db/migrate/20191017035540_create_reviews.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191017035540"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to DeviseCreateAdminUsers (20191018222941)
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (56.0ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191018222941_devise_create_admin_users.rb:5
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")[0m
+  ↳ db/migrate/20191018222941_devise_create_admin_users.rb:39
+  [1m[35m (22.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  ↳ db/migrate/20191018222941_devise_create_admin_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191018222941"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Migrating to CreateActiveAdminComments (20191018222944)
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (42.8ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191018222944_create_active_admin_comments.rb:3
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  ↳ db/migrate/20191018222944_create_active_admin_comments.rb:3
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  ↳ db/migrate/20191018222944_create_active_admin_comments.rb:3
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  ↳ db/migrate/20191018222944_create_active_admin_comments.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191018222944"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (4.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (4.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-18 22:31:25.864338"], ["updated_at", "2019-10-18 22:31:25.864338"]]
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7683323395100698065)[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+Started GET "/" for 172.19.0.1 at 2019-10-18 22:34:20 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (5.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (6.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/home/index.html.erb:14
+  Rendered home/index.html.erb within layouts/application (64.4ms)
+Completed 200 OK in 18445ms (Views: 18379.6ms | ActiveRecord: 20.5ms)
+
+
+Started GET "/" for 172.19.0.1 at 2019-10-18 22:34:47 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mRestaurant Load (14.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/views/home/index.html.erb:14
+  Rendered home/index.html.erb within layouts/application (20.8ms)
+Started GET "/adopt" for 172.19.0.1 at 2019-10-18 22:34:47 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/adopt"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin" for 172.19.0.1 at 2019-10-18 22:34:47 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 172.19.0.1 at 2019-10-18 22:34:48 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (2.2ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (386.6ms)
+Completed 200 OK in 1781ms (Views: 1722.9ms | ActiveRecord: 14.3ms)
+
+
+Completed 200 OK in 1386ms (Views: 1262.9ms | ActiveRecord: 96.0ms)
+
+
+Started GET "/admin/login" for 172.19.0.1 at 2019-10-18 22:35:10 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+Started GET "/admin/" for 172.19.0.1 at 2019-10-18 22:35:10 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 172.19.0.1 at 2019-10-18 22:35:11 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (328.3ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (1.2ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (180.7ms)
+Completed 200 OK in 1219ms (Views: 1216.6ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 956ms (Views: 954.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 172.19.0.1 at 2019-10-18 22:35:23 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c6rGDX2TXRSnxwQswDLmfD3knlRrA0BQKlcCHNppyhMTX27J1HUYokQZENEmAeCoVQ9XeIee2stNgUzkck8Igg==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (23.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 84ms (ActiveRecord: 24.2ms)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c6rGDX2TXRSnxwQswDLmfD3knlRrA0BQKlcCHNppyhMTX27J1HUYokQZENEmAeCoVQ9XeIee2stNgUzkck8Igg==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (1.4ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (105.4ms)
+Completed 200 OK in 729ms (Views: 572.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 172.19.0.1 at 2019-10-18 22:35:46 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0crjfjFb33sCAjFEVsm6pk8YvR/8aojG6qNcWomi9r+xP0u6mL2azeHcJbmw+rxyJ/N0MxD3El2NdRKiIYQ0Lg==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (5.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 22ms (ActiveRecord: 5.3ms)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0crjfjFb33sCAjFEVsm6pk8YvR/8aojG6qNcWomi9r+xP0u6mL2azeHcJbmw+rxyJ/N0MxD3El2NdRKiIYQ0Lg==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (89.6ms)
+Completed 200 OK in 696ms (Views: 539.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/password/new" for 172.19.0.1 at 2019-10-18 22:35:52 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::PasswordsController#new as HTML
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/passwords/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_error_messages.html.erb (2.7ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (3.1ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/passwords/new.html.erb within layouts/active_admin_logged_out (101.9ms)
+Completed 200 OK in 534ms (Views: 530.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 172.19.0.1 at 2019-10-18 22:35:56 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (119.5ms)
+Completed 200 OK in 609ms (Views: 607.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 172.19.0.1 at 2019-10-18 22:37:02 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ywPSgsgVUjduz4txQN6pAF+MCjTOciKUiFIPnkWz3ASr9npGYfMXgY0Rn4ym7a/UN2fDGCLvuA/vhEFm7ZUelQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (3.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 17ms (ActiveRecord: 3.7ms)
+
+
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ywPSgsgVUjduz4txQN6pAF+MCjTOciKUiFIPnkWz3ASr9npGYfMXgY0Rn4ym7a/UN2fDGCLvuA/vhEFm7ZUelQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (93.7ms)
+Completed 200 OK in 736ms (Views: 563.7ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mAdminUser Exists (11.3ms)[0m  [1m[34mSELECT  1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:8
+  [1m[36mAdminUser Create (12.9ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "$2a$11$8FecLYLjOAT169rf4p3f7esMoVMngEKDPyQ6Tt1HqeWLjjtokgGc6"], ["created_at", "2019-10-18 22:37:55.693059"], ["updated_at", "2019-10-18 22:37:55.693059"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+Started POST "/admin/login" for 172.19.0.1 at 2019-10-18 22:38:24 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u832rLL9Ly3tR97H+w6hVHRdWLAtAmEoUSgRhYzUGuTbOF5oGxtqmw6ZyjodPaeAHLaRnMGf+7M2/l99JPLYdQ==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (5.2ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."email" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 316ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/admin" for 172.19.0.1 at 2019-10-18 22:38:25 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (6.0ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb (509.8ms)
+Completed 200 OK in 550ms (Views: 516.9ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/admin/admin_users" for 172.19.0.1 at 2019-10-18 22:38:31 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (4.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "admin_users"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUser Load (3.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (558.9ms)
+Completed 200 OK in 625ms (Views: 553.8ms | ActiveRecord: 15.5ms)
+
+
+Started GET "/admin/comments" for 172.19.0.1 at 2019-10-18 22:38:38 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (8.0ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (13.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (562.6ms)
+Completed 200 OK in 630ms (Views: 548.1ms | ActiveRecord: 61.8ms)
+
+
+Started GET "/admin/dashboard" for 172.19.0.1 at 2019-10-18 22:38:44 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (4.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb (578.9ms)
+Completed 200 OK in 602ms (Views: 586.7ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/admin/comments" for 172.19.0.1 at 2019-10-18 22:38:52 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CommentsController#index as HTML
+  [1m[36mAdminUser Load (4.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["namespace", "admin"], ["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (601.3ms)
+Completed 200 OK in 642ms (Views: 602.4ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/admin/comments?scope=all" for 172.19.0.1 at 2019-10-18 22:39:12 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CommentsController#index as HTML
+  Parameters: {"scope"=>"all"}
+  [1m[36mAdminUser Load (8.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_admin_comments" WHERE "active_admin_comments"."namespace" = $1[0m  [["namespace", "admin"]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "active_admin_comments" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."resource_type" FROM "active_admin_comments" ORDER BY resource_type asc[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT DISTINCT "active_admin_comments"."author_type" FROM "active_admin_comments" ORDER BY author_type asc[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (729.8ms)
+Completed 200 OK in 778ms (Views: 746.8ms | ActiveRecord: 21.5ms)
+
+
+Started GET "/admin/dashboard" for 172.19.0.1 at 2019-10-18 22:39:16 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb (529.1ms)
+Completed 200 OK in 545ms (Views: 535.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin/admin_users" for 172.19.0.1 at 2019-10-18 22:39:19 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (1.4ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "admin_users"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdminUser Load (2.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (761.5ms)
+Completed 200 OK in 797ms (Views: 766.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/login" for 172.19.0.1 at 2019-10-18 22:43:28 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/" for 172.19.0.1 at 2019-10-18 22:43:28 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 57ms (ActiveRecord: 28.1ms)
+
+
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/page/index.html.arb (483.3ms)
+Completed 200 OK in 611ms (Views: 491.4ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/admin/restaurants" for 172.19.0.1 at 2019-10-18 22:43:32 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::RestaurantsController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT  1 AS one FROM "restaurants" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mDish Load (7.6ms)[0m  [1m[34mSELECT "dishes".* FROM "dishes"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mComment Load (8.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mOrder Load (9.8ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (12.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/activeadmin-2.4.0/app/views/active_admin/resource/index.html.arb (1020.1ms)
+Completed 200 OK in 1072ms (Views: 879.5ms | ActiveRecord: 181.4ms)
+
+
